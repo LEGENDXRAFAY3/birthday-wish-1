@@ -4,360 +4,620 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rooji's Birthday Surprise ❤️</title>
+<title>Rooji's Dreamy Birthday ❤️</title>
 
-<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@600;700&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
 <style>
-* { box-sizing: border-box; }
+* { box-sizing:border-box; margin:0; padding:0; }
 
 body {
-  margin: 0;
-  min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg,#ffd1dc,#e6caff,#ffc5df);
-  color: #66365e;
-  overflow-x: hidden;
+  font-family:'Poppins',sans-serif;
+  color:#fff0f8;
+  background:
+    radial-gradient(circle at top,#512044,#180d20 55%,#100914);
+  min-height:100vh;
+  overflow-x:hidden;
 }
 
-.script {
-  font-family: 'Great Vibes', cursive;
+.script { font-family:'Great Vibes',cursive; }
+
+.container {
+  width:100%;
+  max-width:600px;
+  margin:auto;
+  padding:25px 17px 35px;
+  text-align:center;
+}
+
+.stars {
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
+  background-image:
+    radial-gradient(#fff 1px,transparent 1px),
+    radial-gradient(#ff9bda 1px,transparent 1px);
+  background-size:70px 70px,110px 110px;
+  opacity:.22;
+}
+
+.content { position:relative; z-index:1; }
+
+.top {
+  font-size:13px;
+  letter-spacing:4px;
+  color:#ffb5dd;
+  margin-top:20px;
+}
+
+.crown {
+  font-size:36px;
+  margin:15px;
+}
+
+.heading {
+  font-family:'Great Vibes',cursive;
+  font-size:clamp(52px,12vw,75px);
+  color:#ff8fc9;
+  text-shadow:0 0 20px #ff399d;
+  line-height:1.2;
+}
+
+.name {
+  font-family:'Playfair Display',serif;
+  font-size:34px;
+  color:#fff;
+  margin:10px 0;
+}
+
+.date {
+  color:#ffb4dd;
+  letter-spacing:2px;
+  font-size:13px;
 }
 
 .card {
-  background: rgba(255,255,255,.88);
-  backdrop-filter: blur(12px);
-  border: 1px solid white;
-  box-shadow: 0 15px 45px rgba(160,70,130,.18);
+  margin-top:25px;
+  padding:25px 20px;
+  border:1px solid #bd6199;
+  border-radius:25px;
+  background:linear-gradient(145deg,
+    rgba(255,255,255,.09),
+    rgba(255,100,180,.06));
+  box-shadow:0 0 25px rgba(255,70,170,.12);
+  backdrop-filter:blur(10px);
 }
 
-.glow {
-  text-shadow: 0 0 15px #ff9bc9;
+.section-title {
+  font-family:'Great Vibes',cursive;
+  color:#ff9acb;
+  font-size:42px;
+  margin-bottom:15px;
+}
+
+.message {
+  font-size:14px;
+  line-height:2;
+  color:#fce5f2;
+}
+
+.highlight {
+  color:#ff9dce;
+  font-weight:700;
+}
+
+.cake-img {
+  width:100%;
+  max-width:310px;
+  height:230px;
+  object-fit:cover;
+  border-radius:20px;
+  border:2px solid #ff9acb;
+  box-shadow:0 0 25px #c94e9a;
+  margin:20px auto;
+  display:block;
+}
+
+.btn {
+  border:none;
+  padding:13px 22px;
+  border-radius:30px;
+  color:white;
+  font-family:'Poppins',sans-serif;
+  font-weight:600;
+  font-size:13px;
+  cursor:pointer;
+  background:linear-gradient(135deg,#ff4d9d,#a34bd5);
+  box-shadow:0 0 18px rgba(255,80,170,.35);
+  margin:7px 4px;
+  transition:.25s;
+}
+
+.btn:hover { transform:translateY(-3px); }
+
+.btn:active { transform:scale(.95); }
+
+.secondary {
+  background:linear-gradient(135deg,#7442a3,#bd60a7);
+}
+
+.countdown {
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  margin-top:22px;
+}
+
+.time-box {
+  background:rgba(255,130,200,.1);
+  border:1px solid #ed83bd;
+  padding:12px 3px;
+  border-radius:15px;
+}
+
+.time-box strong {
+  display:block;
+  font-size:25px;
+  color:#ff9bce;
+}
+
+.time-box small {
+  font-size:10px;
+  color:#fbd6eb;
+}
+
+.gift {
+  font-size:75px;
+  margin:20px;
+  cursor:pointer;
+  animation:bounce 2s infinite;
+}
+
+@keyframes bounce {
+  50% { transform:translateY(-10px); }
+}
+
+.hidden { display:none; }
+
+.answer {
+  color:#ffaad5;
+  font-size:15px;
+  line-height:2;
+  margin-top:20px;
+  font-weight:600;
+}
+
+.promise {
+  text-align:left;
+  font-size:13px;
+  line-height:2.7;
+  color:#ffe3f2;
+}
+
+.footer {
+  padding:35px 10px 15px;
+  border-top:1px solid #a74c82;
+  margin-top:30px;
+}
+
+.footer h2 {
+  font-family:'Great Vibes',cursive;
+  color:#ff86c4;
+  font-size:55px;
+  text-shadow:0 0 15px #ff399d;
+}
+
+.footer p {
+  font-size:12px;
+  color:#f6c9e1;
+  margin-top:8px;
 }
 
 .heart {
-  position: fixed;
-  bottom: -30px;
-  animation: floatUp 8s linear infinite;
-  opacity: .6;
-  pointer-events: none;
+  position:fixed;
+  bottom:-30px;
+  pointer-events:none;
+  animation:float 8s linear forwards;
+  z-index:5;
 }
 
-@keyframes floatUp {
-  to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+@keyframes float {
+  to { transform:translateY(-110vh) rotate(360deg); opacity:0; }
 }
 
-button {
-  transition: .25s;
+hr {
+  border:0;
+  border-top:1px solid #b85c91;
+  margin:20px 0;
 }
 
-button:active { transform: scale(.95); }
-
-.pink-btn {
-  background: linear-gradient(135deg,#ff62a5,#c56bdf);
-  color: white;
-  box-shadow: 0 5px 15px #e8a1d1;
+@media(max-width:360px) {
+  .countdown { gap:4px; }
+  .time-box strong { font-size:20px; }
+  .time-box small { font-size:9px; }
 }
-
-.pink-btn:hover { transform: translateY(-3px); }
-
-.yes-btn { background: #ec65a7; color: white; }
-.no-btn { background: #e9e0ed; color: #784e76; }
-
-.hidden-section { display: none; }
 </style>
 </head>
 
-<body class="px-4 py-8">
+<body>
+<div class="stars"></div>
 
-<div class="max-w-lg mx-auto space-y-6">
+<main class="container content">
 
   <!-- HEADER -->
-  <div class="text-center">
-    <p class="text-sm tracking-widest text-pink-700">
-      ✨ A SPECIAL DAY FOR SOMEONE SPECIAL ✨
+  <div class="top">✦ A LITTLE SURPRISE FOR MY BESTIE ✦</div>
+
+  <div class="crown">👑</div>
+
+  <h1 class="heading">Advance Happy Birthday</h1>
+
+  <h2 class="name">🎀 ROOJI 🎀</h2>
+
+  <p class="date">25 NOVEMBER 2026</p>
+
+  <!-- MAIN WISH -->
+  <section class="card">
+
+    <h2 class="section-title">Dear Bestie ♡</h2>
+
+    <p class="message">
+      Advance Happy Birthday meri Bestie! 🥹🎂
+      Allah tumhein hamesha khush, sehatmand aur
+      kamyab rakhe.
+
+      <br><br>
+
+      Tum meri life ka woh khaas hissa ho jo
+      hamesha dil ke bohat qareeb rahega. ❤️
+
+      <br><br>
+
+      May all your dreams come true, may your
+      smile never fade and may Allah fill your
+      life with endless happiness.
+
+      <br><br>
+
+      Stay the same crazy, caring and amazing
+      person you are! 💗
+
+      <br><br>
+
+      <span class="highlight">
+        You're not just a bestie, you're a beautiful
+        part of my memories! 🦋
+      </span>
     </p>
 
-    <h1 class="script text-6xl md:text-7xl text-pink-600 glow mt-3">
-      Happy Birthday
-    </h1>
+  </section>
 
-    <h2 class="text-4xl font-extrabold text-purple-600 mt-2">
-      🎀 ROOJI 🎀
-    </h2>
+  <!-- CAKE -->
+  <section class="card">
 
-    <p class="mt-3 text-sm text-purple-700">
-      25 November 2026
-    </p>
-  </div>
+    <h2 class="section-title">A Cake For You 🎂</h2>
 
-  <!-- MAIN CARD -->
-  <div class="card rounded-3xl p-6 text-center">
+    <img
+      class="cake-img"
+      src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=700"
+      alt="Beautiful birthday cake"
+      onerror="this.style.display='none';document.getElementById('cakeFallback').style.display='block';"
+    >
 
-    <div class="text-6xl mb-4">🎂🎈🎁</div>
-
-    <h2 class="script text-4xl text-pink-600 mb-3">
-      Dear Rooji ❤️
-    </h2>
-
-    <p class="text-gray-700 leading-8 text-sm">
-      Today is not just another day. It's the birthday of a
-      wonderful person who deserves endless happiness.
-      May your life always be filled with beautiful moments,
-      genuine smiles and countless blessings. 💗
-    </p>
-
-    <div class="my-6 border-t border-pink-200"></div>
-
-    <h3 class="script text-4xl text-purple-600 mb-3">
-      My Special Wishes
-    </h3>
-
-    <div class="text-sm text-gray-700 leading-8 space-y-3">
-
-      <p>🌸 May every dream of yours turn into reality.</p>
-
-      <p>💖 May your smile never fade and your heart always stay happy.</p>
-
-      <p>🦋 May Allah bless you with success, peace and endless happiness.</p>
-
-      <p>🎀 May this new chapter bring you unforgettable memories.</p>
-
-      <p>✨ Always stay the beautiful soul you are!</p>
-
+    <div id="cakeFallback" class="hidden" style="font-size:100px">
+      🎂
     </div>
 
-    <div class="text-5xl my-6">💗 🥹 💗</div>
-
-    <p class="script text-4xl text-pink-600">
-      Stay Blessed, Rooji!
+    <p class="message">
+      This little cake is specially for you, Rooji! 💕
     </p>
 
-  </div>
+    <button class="btn" onclick="cutCake()">
+      🎂 Cut Your Cake
+    </button>
+
+    <p id="cakeMessage" class="answer"></p>
+
+  </section>
 
   <!-- COUNTDOWN -->
-  <div class="card rounded-3xl p-6 text-center">
+  <section class="card">
 
-    <h2 class="script text-4xl text-purple-600">
-      Birthday Countdown ⏳
-    </h2>
+    <h2 class="section-title">Birthday Countdown ⏳</h2>
 
-    <p class="text-xs text-gray-500 mt-2">
-      Waiting for your special day!
-    </p>
+    <p class="message">Waiting for your special day!</p>
 
-    <div id="countdown"
-      class="text-2xl font-bold text-pink-600 mt-5">
-      Loading...
-    </div>
+    <div class="countdown">
 
-  </div>
+      <div class="time-box">
+        <strong id="days">00</strong>
+        <small>Days</small>
+      </div>
 
-  <!-- MUSIC -->
-  <div class="card rounded-3xl p-6 text-center">
+      <div class="time-box">
+        <strong id="hours">00</strong>
+        <small>Hours</small>
+      </div>
 
-    <h2 class="script text-4xl text-pink-600">
-      A Song For You 🎶
-    </h2>
+      <div class="time-box">
+        <strong id="minutes">00</strong>
+        <small>Minutes</small>
+      </div>
 
-    <p class="text-sm text-gray-600 my-4">
-      A little music to make your day more special.
-    </p>
-
-    <audio id="birthdayMusic" loop>
-      <source src="birthday-music.mp3" type="audio/mpeg">
-    </audio>
-
-    <button onclick="toggleMusic()"
-      id="musicBtn"
-      class="pink-btn rounded-full px-7 py-3 font-semibold">
-      ▶ Play Birthday Music
-    </button>
-
-    <p class="text-xs text-gray-500 mt-3">
-      🎵 Music ON / OFF
-    </p>
-
-  </div>
-
-  <!-- YES / NO SURPRISE -->
-  <div class="card rounded-3xl p-6 text-center">
-
-    <h2 class="script text-4xl text-purple-600">
-      One Little Question 💌
-    </h2>
-
-    <p class="font-semibold text-gray-700 mt-5">
-      Rooji, do you like this little surprise? 🥹
-    </p>
-
-    <div class="flex justify-center gap-4 mt-6">
-
-      <button onclick="answerYes()"
-        class="yes-btn px-8 py-3 rounded-full font-bold">
-        YES ❤️
-      </button>
-
-      <button onclick="answerNo()"
-        class="no-btn px-8 py-3 rounded-full font-bold">
-        NO 🙈
-      </button>
+      <div class="time-box">
+        <strong id="seconds">00</strong>
+        <small>Seconds</small>
+      </div>
 
     </div>
 
-    <p id="answer"
-      class="text-pink-600 font-semibold mt-6 text-sm">
+  </section>
+
+  <!-- BESTIE PROMISES -->
+  <section class="card">
+
+    <h2 class="section-title">A Few Bestie Promises 💌</h2>
+
+    <div class="promise">
+      💗 May your smile always stay beautiful.
+
+      <br>
+      🌸 May you achieve everything you dream of.
+
+      <br>
+      🦋 May Allah protect you from every difficulty.
+
+      <br>
+      🎀 May every coming year be better than the last.
+
+      <br>
+      ❤️ Never stop being your wonderful self!
+    </div>
+
+  </section>
+
+  <!-- YES / NO -->
+  <section class="card">
+
+    <h2 class="section-title">One Little Question 🙈</h2>
+
+    <p class="message">
+      Rooji, did you like this little surprise?
     </p>
 
-  </div>
-
-  <!-- FINAL SURPRISE -->
-  <div class="card rounded-3xl p-7 text-center">
-
-    <button onclick="finalSurprise()"
-      class="pink-btn px-8 py-4 rounded-full font-bold">
-      Open Your Final Surprise 🎁
+    <button class="btn" onclick="yesAnswer()">
+      YES ❤️
     </button>
 
-    <div id="finalMessage" class="hidden-section mt-6">
+    <button class="btn secondary" onclick="noAnswer()">
+      NO 🙈
+    </button>
 
-      <h2 class="script text-5xl text-pink-600">
-        Lots of Love! 💗
+    <p id="answer" class="answer"></p>
+
+  </section>
+
+  <!-- GIFT -->
+  <section class="card">
+
+    <h2 class="section-title">Your Secret Gift 🎁</h2>
+
+    <p class="message">
+      There's something special waiting for you!
+    </p>
+
+    <div class="gift" onclick="openGift()">🎁</div>
+
+    <p id="giftMessage" class="answer hidden">
+      Surprise! 🥹💗
+
+      <br><br>
+
+      Rooji, you deserve all the happiness,
+      success and beautiful moments in life.
+
+      <br><br>
+
+      Keep smiling, Bestie! 🌸
+    </p>
+
+    <button class="btn" onclick="openGift()">
+      Open Your Gift 🎀
+    </button>
+
+  </section>
+
+  <!-- FINAL WISH -->
+  <section class="card">
+
+    <h2 class="section-title">One Last Surprise 💝</h2>
+
+    <p class="message">
+      A special wish is waiting just for you!
+    </p>
+
+    <button class="btn" onclick="finalWish()">
+      Click For Your Special Wish ♡
+    </button>
+
+    <div id="final" class="hidden">
+
+      <hr>
+
+      <h2 class="section-title">
+        Lots of Love, Rooji! ❤️
       </h2>
 
-      <p class="text-gray-700 mt-4 leading-8 text-sm">
-        Rooji, may your birthday be as beautiful as your heart.
-        Keep smiling, keep shining and never stop believing
-        in yourself. You deserve all the happiness in the world!
-      </p>
+      <p class="message">
+        Happy Birthday in advance!
 
-      <div class="text-5xl mt-5">🎂💐🎀</div>
+        <br><br>
+
+        May your life always shine brighter
+        than the stars. May your heart always
+        find peace and may your days be full
+        of reasons to smile.
+
+        <br><br>
+
+        Stay blessed, stay happy and stay amazing!
+
+        <br><br>
+
+        <span class="highlight">
+          You're truly special, Bestie! 🥹💗
+        </span>
+      </p>
 
     </div>
 
-  </div>
+  </section>
 
   <!-- FOOTER -->
-  <footer class="text-center py-6">
+  <footer class="footer">
 
-    <p class="script text-4xl text-pink-700">
-      Birthday Wishes
-    </p>
+    <p>Made with special wishes for</p>
 
-    <h2 class="text-2xl font-extrabold text-purple-700 mt-2">
-      BY WEHSHI ❤️
-    </h2>
+    <h2>Rooji ♡</h2>
 
-    <p class="text-xs text-purple-700 mt-3">
-      Made with love & special feelings ✨
-    </p>
+    <hr>
 
-    <p class="text-xs text-gray-600 mt-2">
-      © 2026 | A little surprise for Rooji
-    </p>
+    <p>Birthday Wish By</p>
+
+    <h2>WEHSHI ❤️</h2>
+
+    <p>✨ A Little Surprise, A Lot Of Happiness ✨</p>
+
+    <p>© 2026 | All Rights Reserved</p>
 
   </footer>
 
-</div>
+</main>
 
 <script>
 
 // COUNTDOWN
 function updateCountdown() {
+
   const birthday = new Date("2026-11-25T00:00:00").getTime();
-  const now = new Date().getTime();
+  const now = Date.now();
   const diff = birthday - now;
 
   if (diff <= 0) {
-    document.getElementById("countdown").innerHTML =
-      "🎉 HAPPY BIRTHDAY ROOJI! 🎂";
+    document.getElementById("days").innerText = "🎉";
+    document.getElementById("hours").innerText = "🎂";
+    document.getElementById("minutes").innerText = "❤️";
+    document.getElementById("seconds").innerText = "!";
     return;
   }
 
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const minutes = Math.floor((diff % 3600000) / 60000);
-  const seconds = Math.floor((diff % 60000) / 1000);
+  document.getElementById("days").innerText =
+    Math.floor(diff / 86400000);
 
-  document.getElementById("countdown").innerHTML =
-    `${days} Days <br>
-     ${hours} Hours ${minutes} Min ${seconds} Sec`;
+  document.getElementById("hours").innerText =
+    Math.floor((diff % 86400000) / 3600000);
+
+  document.getElementById("minutes").innerText =
+    Math.floor((diff % 3600000) / 60000);
+
+  document.getElementById("seconds").innerText =
+    Math.floor((diff % 60000) / 1000);
 }
 
 updateCountdown();
-setInterval(updateCountdown, 1000);
+setInterval(updateCountdown,1000);
 
 
-// MUSIC
-function toggleMusic() {
-  const music = document.getElementById("birthdayMusic");
-  const btn = document.getElementById("musicBtn");
-
-  if (music.paused) {
-    music.play().then(() => {
-      btn.innerHTML = "⏸ Pause Music";
-    }).catch(() => {
-      btn.innerHTML = "▶ Try Playing Again";
+// CONFETTI
+function celebrate() {
+  if (typeof confetti === "function") {
+    confetti({
+      particleCount:180,
+      spread:100,
+      origin:{y:0.6}
     });
-  } else {
-    music.pause();
-    btn.innerHTML = "▶ Play Birthday Music";
   }
 }
 
 
-// YES BUTTON
-function answerYes() {
-  document.getElementById("answer").innerHTML =
-    "Awww! 🥹❤️ So happy you liked it, Rooji!";
+// CAKE
+function cutCake() {
 
-  confetti({
-    particleCount: 150,
-    spread: 100,
-    origin: { y: 0.6 }
-  });
+  document.getElementById("cakeMessage").innerText =
+    "Yayyy! 🎂 Happy Birthday in advance, Rooji! ❤️";
+
+  celebrate();
 }
 
 
-// NO BUTTON
-function answerNo() {
-  document.getElementById("answer").innerHTML =
-    "Hehe! 🙈 It's okay! This surprise is still made with love! 💗";
+// YES
+function yesAnswer() {
+
+  document.getElementById("answer").innerText =
+    "Awww! 🥹❤️ So happy you liked it, Bestie!";
+
+  celebrate();
 }
 
 
-// FINAL SURPRISE
-function finalSurprise() {
-  document.getElementById("finalMessage").style.display = "block";
+// NO
+function noAnswer() {
 
-  confetti({
-    particleCount: 250,
-    spread: 140,
-    origin: { y: 0.6 }
-  });
+  document.getElementById("answer").innerText =
+    "Hehe! 🙈 Koi baat nahi Bestie, WEHSHI ki taraf se phir bhi lots of wishes! 💗";
+
+}
+
+
+// GIFT
+function openGift() {
+
+  document.getElementById("giftMessage").style.display =
+    "block";
+
+  celebrate();
+
+}
+
+
+// FINAL WISH
+function finalWish() {
+
+  document.getElementById("final").style.display =
+    "block";
+
+  celebrate();
+
 }
 
 
 // FLOATING HEARTS
 setInterval(() => {
+
   const heart = document.createElement("div");
 
   heart.className = "heart";
-  heart.innerHTML = ["💗","💕","💖","✨"][Math.floor(Math.random()*4)];
 
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = (15 + Math.random() * 20) + "px";
+  const symbols = ["💗","💕","💖","🌸","✨","🦋"];
+
+  heart.innerText =
+    symbols[Math.floor(Math.random()*symbols.length)];
+
+  heart.style.left = Math.random()*100+"vw";
+
+  heart.style.fontSize =
+    (15+Math.random()*20)+"px";
 
   document.body.appendChild(heart);
 
-  setTimeout(() => heart.remove(), 8000);
+  setTimeout(() => heart.remove(),8000);
 
-}, 900);
+},900);
 
 </script>
 
 </body>
-</html>
+  </html>
+  
